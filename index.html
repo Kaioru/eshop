@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container-fluid align-items-center" style="text-align: center; padding: 8% 0">
+      <img src="assets/images/eshop-logo.png" class="img-fluid"></img>
+      <br />
+      <h1 class="display-1" id="countdown"></h1>
+      <p class="text-muted">When does the eShop update?</p>
+      <hr style="width: 40%"/>
+      <small>A simple page thingymajig that countdowns to 9 AM PST everyday for Nintendo eShop updates.</small>
+      <br />
+      <small>Did I mention its open-source? Ya it is, nothing much to see tho.</small>
+    </div>
+  </header>
+
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.11/moment-timezone-with-data.min.js"></script>
+  <script type="text/javascript">
+    var tz = 'America/Los_Angeles';
+    var date = moment().tz("America/Los_Angeles").format().split('T')[0];
+    var nextUpdate = moment.tz(date + ' 09:00', tz);
+    $('#countdown')
+      .countdown(nextUpdate.toDate(), function(event) {
+        $(this).text(
+          event.strftime('%H:%M:%S')
+        );
+      });
+  </script>
+</body>
