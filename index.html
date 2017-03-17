@@ -17,6 +17,8 @@
     <div class="container-fluid align-items-center" style="text-align: center; padding: 8% 0">
       <img src="assets/images/eshop-logo.png" class="img-fluid"></img>
       <br />
+      <small id="date"></small>
+      <br />
       <h1 class="display-1" id="countdown"></h1>
       <p class="text-muted">When does the eShop update?</p>
       <hr style="width: 40%"/>
@@ -32,8 +34,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.11/moment-timezone-with-data.min.js"></script>
   <script type="text/javascript">
     var tz = 'America/Los_Angeles';
-    var date = moment().tz("America/Los_Angeles").format().split('T')[0];
+    var date = moment().tz(tz).format().split('T')[0];
     var nextUpdate = moment.tz(date + ' 09:00', tz);
+    $('#date').text(moment().tz(tz).format('DD MMMM YYYY'));
     $('#countdown')
       .countdown(nextUpdate.toDate(), function(event) {
         $(this).text(
