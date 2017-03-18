@@ -36,6 +36,8 @@
     var tz = 'America/Los_Angeles';
     var date = moment().tz(tz).format().split('T')[0];
     var nextUpdate = moment.tz(date + ' 09:00', tz);
+    if (nextUpdate.diff(nextUpdate, 'hours') <= 0)
+      nextUpdate = nextUpdate.add(1, 'days');
     $('#date').text(moment().tz(tz).format('DD MMMM YYYY'));
     $('#countdown')
       .countdown(nextUpdate.toDate(), function(event) {
